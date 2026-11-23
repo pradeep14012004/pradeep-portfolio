@@ -122,6 +122,14 @@ h2 .stop{color:var(--wh)}
 .feat p{text-transform:none;font-size:15px;line-height:1.35;margin:14px 0 18px;color:#dfe5e9}
 .live{display:inline-flex;gap:8px;align-items:center;color:var(--acc);font-size:12px;font-weight:700}.live:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--acc);animation:p 3.2s infinite}
 @keyframes p{50%{box-shadow:0 0 0 7px rgb(2 210 227/0)}0%{box-shadow:0 0 0 0 rgb(2 210 227/.5)}}
+/* extracurricular interests */
+.activity-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px;margin-top:44px}
+.activity-card{min-height:220px;padding:24px;background:var(--fill);border:1px solid var(--outline);display:flex;flex-direction:column;align-items:flex-start;gap:14px;transition:background .25s,border-color .25s}
+.activity-card:hover{background:rgb(2 210 227/.07);border-color:var(--acc)}
+.activity-no{font-size:11px;letter-spacing:.04em;color:var(--acc);font-weight:700}
+.activity-card h3{font:700 clamp(24px,2vw,32px)/.98 var(--d);text-transform:uppercase}
+.activity-card p{text-transform:none;font-size:14px;line-height:1.4;color:#dfe5e9;max-width:28rem}
+.activity-tag{margin-top:auto;padding-top:12px;border-top:1px solid var(--outline);width:100%;font-size:10px;letter-spacing:.12em;color:var(--steel)}
 /* footer */
 .fo{position:relative;background:var(--acc);padding:16px;min-height:100svh;display:flex;z-index:10}
 .pn{position:relative;flex:1;background:var(--blk);color:var(--wh);overflow:hidden;padding:var(--g);display:flex;flex-direction:column;justify-content:space-between;gap:48px}
@@ -149,7 +157,7 @@ h2 .stop{color:var(--wh)}
    <canvas class="bgc" id="c1" aria-hidden="true"></canvas>
    <header class="top r in" style="--b:0ms">
     <a class="logo" href="#home" aria-label="Pradeep M. Doddakaragi">PMD</a>
-    <nav aria-label="Primary"><a href="#about">About</a><a href="#work">Work</a><a href="#capabilities">Capabilities</a><a href="#research">Research</a><a href="#contact">Contact</a></nav>
+    <nav aria-label="Primary"><a href="#about">About</a><a href="#work">Work</a><a href="#capabilities">Capabilities</a><a href="#research">Research</a><a href="#extracurricular">Beyond Academics</a><a href="#contact">Contact</a></nav>
     <button class="bgr" id="bgr" aria-label="Open navigation"><i></i><i></i></button><a class="gh" href="https://github.com/pradeep14012004" target="_blank" rel="noreferrer"><b><span aria-hidden="true">[ </span>GitHub<span aria-hidden="true"> → ]</span></b></a>
    </header>
    <div class="mid">
@@ -210,6 +218,17 @@ h2 .stop{color:var(--wh)}
    <div class="cloud r" id="cloud" data-wrap></div>
   </section>
 
+  <section class="sec" id="extracurricular">
+   <h2 class="d" data-wrap><span class="sp" data-split>beyond the</span><span class="sp" data-split style="--b:130ms">classroom<span class="stop">.</span></span></h2>
+   <p class="lede r" data-wrap>Interests and pursuits that take me beyond technology — discipline, focus and time away from the screen.</p>
+   <div class="activity-grid r" data-wrap>
+    <article class="activity-card"><span class="activity-no">01 / EQUESTRIAN</span><h3>Horse Riding</h3><p>A personal interest in equestrian riding.</p><span class="activity-tag">PERSONAL INTEREST</span></article>
+    <article class="activity-card"><span class="activity-no">02 / EQUESTRIAN SPORT</span><h3>Polo</h3><p>An interest in the strategy, coordination and horsemanship involved in polo.</p><span class="activity-tag">PERSONAL INTEREST</span></article>
+    <article class="activity-card"><span class="activity-no">03 / COMBAT SPORT</span><h3>Boxing</h3><p>An interest in boxing and the discipline it demands.</p><span class="activity-tag">PERSONAL INTEREST</span></article>
+    <article class="activity-card"><span class="activity-no">04 / MARTIAL SKILL</span><h3>Hand-to-Hand Combat</h3><p>A listed personal skill and interest in close-quarters physical training.</p><span class="activity-tag">PERSONAL INTEREST</span></article>
+   </div>
+  </section>
+
   <section class="sec" id="research">
    <h2 class="d" data-wrap><span class="sp" data-split>the path</span><span class="sp" data-split style="--b:130ms">so far<span class="stop">.</span></span></h2>
    <div class="feat r" data-wrap>
@@ -232,7 +251,7 @@ h2 .stop{color:var(--wh)}
    <h2 class="d" data-wrap style="color:var(--acc)"><span class="sp" style="justify-content:flex-end" data-split>let’s make</span><span class="sp" style="justify-content:flex-end" data-split style="--b:130ms">it real<span class="stop" style="color:#fff">.</span></span></h2>
   </div>
   <div class="mid2">
-   <nav class="nv" aria-label="Footer"><a href="#about">about</a><a href="#work">work</a><a href="#capabilities">capabilities</a><a href="#research">research</a></nav>
+   <nav class="nv" aria-label="Footer"><a href="#about">about</a><a href="#work">work</a><a href="#capabilities">capabilities</a><a href="#research">research</a><a href="#extracurricular">beyond academics</a></nav>
    <div><p>I’m interested in research, internships and engineering opportunities where curiosity meets meaningful work.</p><div class="lk"><a href="mailto:pradeepmallappadoddakaragi@gmail.com">email</a><a href="https://github.com/pradeep14012004" target="_blank" rel="noreferrer">github ↗</a><!--zip--><a href="assets/Pradeep-Doddakaragi-Resume.pdf" download>résumé ↓</a><!--/zip--></div></div>
   </div>
   <div class="row2">
@@ -301,7 +320,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){io.uno
 document.querySelectorAll("[data-wrap],.row,.yr,.hero .r,.hero [data-split]").forEach(el=>io.observe(el));
 /* Native browser scrolling; no remote JavaScript dependencies. */
 /* full-screen menu sheet below 1280 */
-const NAV=[["About","#about"],["Work","#work"],["Capabilities","#capabilities"],["Research","#research"],["Contact","#contact"]];let sheet=null;
+const NAV=[["About","#about"],["Work","#work"],["Capabilities","#capabilities"],["Research","#research"],["Beyond Academics","#extracurricular"],["Contact","#contact"]];let sheet=null;
 function closeMenu(){if(!sheet)return;sheet.remove();sheet=null;document.documentElement.classList.remove("lock");lenis&&lenis.start();$("#bgr").focus()}
 $("#bgr").onclick=()=>{sheet=document.createElement("div");sheet.className="sheet";sheet.setAttribute("role","dialog");sheet.setAttribute("aria-modal","true");sheet.setAttribute("aria-label","Navigation");
  sheet.innerHTML=`<div class="sh1"><a class="logo" href="#home">PMD</a><button class="x" aria-label="Close navigation"><i></i><i></i></button></div><nav>${NAV.map(n=>`<a href="${n[1]}">${n[0]}</a>`).join("")}</nav>`;
