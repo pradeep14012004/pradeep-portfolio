@@ -11,7 +11,7 @@
 <style>
 :root{--bg:#f7fafb;--fg:#090a0b;--mut:rgb(9 10 11/.35);--ink:#0e0f14;--blk:#090a0b;--line:#dfe5e9;--steel:#b6c1c8;--acc:#02d2e3;--wh:#fff;--outline:#535450;--fill:rgb(255 255 255/.08);--d:"Oswald",Impact,sans-serif;--s:"Space Grotesk",system-ui,sans-serif;--e:cubic-bezier(.33,0,0,1);--g:clamp(20px,2.22vw,32px);color-scheme:light}
 *{box-sizing:border-box}
-html{font-size:16px}@media(max-width:1920px){html{font-size:.833333vw}}@media(max-width:1440px){html{font-size:1.111111vw}}@media(max-width:1279px){html{font-size:16px}}
+html{font-size:16px;scroll-behavior:smooth}@media(max-width:1920px){html{font-size:.833333vw}}@media(max-width:1440px){html{font-size:1.111111vw}}@media(max-width:1279px){html{font-size:16px}}
 html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}html.lock{overflow:hidden;height:100%}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--s);text-transform:uppercase;line-height:.9;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none;transition:color .15s}a:hover{color:var(--acc)}
@@ -136,7 +136,7 @@ h2 .stop{color:var(--wh)}
 @media(max-width:1023px){.mid{flex-direction:column;align-items:flex-start}.panels{width:100%;grid-template-columns:1fr 1fr}}
 @media(max-width:1279px){header.top>nav,header.top .gh{display:none}.bgr{display:block}}
 @media(max-width:639px){.panels,.foot .soc,.foot .tr{display:none}.foot{grid-template-columns:1fr}.rail{left:12px;transform:none}.row{grid-template-columns:1fr;min-height:0;padding:28px 0 28px 44px}.row .c,.row:nth-child(n) .c{grid-column:1;padding:0;text-align:left}.hero{padding-bottom:24px}}
-@media(prefers-reduced-motion:reduce){.w,.r{transition:none;opacity:1;transform:none}.live:before{animation:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.w,.r{transition:none;opacity:1;transform:none}.live:before{animation:none}}
 </style>
 </head>
 <body>
@@ -299,11 +299,7 @@ function run(el){
  if(el.classList.contains("yr")&&+el.dataset.i%2==0&&!RM)setTimeout(()=>new Sp(1,x=>el.style.opacity=x).to(.4,32,26),2200+el.querySelectorAll(".lt").length*26)}
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){io.unobserve(e.target);go.then(()=>run(e.target))}}),{rootMargin:"0% 0% -15% 0%"});
 document.querySelectorAll("[data-wrap],.row,.yr,.hero .r,.hero [data-split]").forEach(el=>io.observe(el));
-/* smooth scroll: Lenis, driven from one rAF loop; skipped under reduced motion */
-let lenis=null;
-if(!RM)import("https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.mjs").then(m=>{lenis=new m.default({smoothWheel:true});document.documentElement.classList.add("lenis","lenis-smooth");
- const f=t=>{lenis.raf(t);requestAnimationFrame(f)};requestAnimationFrame(f)}).catch(()=>{});
-document.addEventListener("click",e=>{const a=e.target.closest('a[href^="#"]');if(!a||!lenis)return;const t=document.querySelector(a.getAttribute("href"));if(t){e.preventDefault();lenis.scrollTo(t)}});
+/* Native browser scrolling; no remote JavaScript dependencies. */
 /* full-screen menu sheet below 1280 */
 const NAV=[["About","#about"],["Work","#work"],["Capabilities","#capabilities"],["Research","#research"],["Contact","#contact"]];let sheet=null;
 function closeMenu(){if(!sheet)return;sheet.remove();sheet=null;document.documentElement.classList.remove("lock");lenis&&lenis.start();$("#bgr").focus()}
